@@ -18,7 +18,7 @@ let online = false
 
 function GetLS() {
     // console.log("GetLS")
-    debugger
+    //debugger
     let child = document.querySelector("._24-Ff").children
     var dt = new Date();
     var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
@@ -110,6 +110,7 @@ let LSToday = (user) => {
 }
 
 $("#app").on("DOMSubtreeModified", function() {
+    
     let UserName = document.querySelector("._21nHd").innerText
 
     if (Name != UserName) {
