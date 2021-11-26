@@ -24,7 +24,7 @@ function GetLS() {
     var time = dt.getHours() + ":" + dt.getMinutes() + ":" + dt.getSeconds();
     var date = {
         date: dt.getDate().toString(),
-        month: dt.getMonth().toString(),
+        month: (dt.getMonth() + 1).toString(),
         year: dt.getFullYear().toString(),
         day: dt.getDay().toString(),
     }
@@ -98,7 +98,16 @@ function GetLS() {
     }
 }
 
-
+let LSToday = (user) => {
+    var dt = new Date();
+    let date = {
+        date: dt.getDate().toString(),
+        month: (dt.getMonth() + 1).toString(),
+        year: dt.getFullYear().toString(),
+        day: dt.getDay().toString(),
+    }
+    return sessionData[user][date.year][date.month][date.date]
+}
 
 $("#app").on("DOMSubtreeModified", function() {
     let UserName = document.querySelector("._21nHd").innerText
@@ -106,7 +115,9 @@ $("#app").on("DOMSubtreeModified", function() {
     if (Name != UserName) {
         console.log("=========================================")
         console.log(`User iS Now ${UserName}`)
+        GetLS()
         $("._24-Ff").on("DOMSubtreeModified", GetLS)
+        
         Name = UserName
     }
 })
